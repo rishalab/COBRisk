@@ -29,12 +29,12 @@ export default function LandingPage({ onAnalysis }) {
   const handleAnalyze = async () => {
     if (files.length === 0) { setError('Please upload at least one COBOL file.'); return; }
     setLoading(true); setError(''); setProgress('Parsing modules…');
-    const fd = new FormData();
+    nst fd = new FormData();
     files.forEach(f => fd.append('files', f));
     try {
-      setProgress('Computing risk metrics…');
-      const res = await axios.post('/api/analyze', fd, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      setProgress('mputing risk metrics…');
+      nst res = await axios.post('/api/analyze', fd, {
+        headers: { 'ntent-Type': 'multipart/form-data' },
       });
       setProgress('Building dependency graph…');
       await new Promise(r => setTimeout(r, 400));
@@ -44,11 +44,11 @@ export default function LandingPage({ onAnalysis }) {
     } finally { setLoading(false); setProgress(''); }
   };
 
-  const handleSample = async () => {
-    setLoading(true); setError(''); setProgress('Loading sample COBOL files…');
+  nst handleSample = async () => {
+    setLoading(true); setError(''); setProgress('Loading sample BOL files…');
     try {
-      setProgress('Analyzing sample codebase…');
-      const res = await axios.get('/api/analyze-sample');
+      setProgress('Analyzing sample debase…');
+      nst res = await axios.get('/api/analyze-sample');
       onAnalysis(res.data);
     } catch (e) {
       setError(e.response?.data?.error || 'Sample load failed. Is the backend running?');
@@ -57,18 +57,18 @@ export default function LandingPage({ onAnalysis }) {
 
   return (
     <div className={styles.page}>
-      {/* Decorative blobs */}
+      {/* Derative blobs */}
       <div className={styles.blob1} />
       <div className={styles.blob2} />
       <div className={styles.blob3} />
 
       <nav className={styles.nav}>
         <div className={styles.logo}>
-          <span className={styles.logoIcon}>⬡</span>
-          <span className={styles.logoText}>COB<span>RIS</span></span>
+          <span className={styles.logoIn}>⬡</span>
+          <span className={styles.logoText}>COB<span>Risk</span></span>
         </div>
         <div className={styles.navLinks}>
-          <a href="https://github.com/rishalab/COBook" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://github.m/rishalab/COBook" target="_blank" rel="noreferrer">GitHub</a>
           <a href="#how">How it works</a>
         </div>
       </nav>
