@@ -48,7 +48,7 @@ export default function LandingPage({ onAnalysis }) {
     setLoading(true); setError(''); setProgress('Loading sample BOL files…');
     try {
       setProgress('Analyzing sample debase…');
-      nst res = await axios.get('/api/analyze-sample');
+      const res = await axios.get('/api/analyze-sample');
       onAnalysis(res.data);
     } catch (e) {
       setError(e.response?.data?.error || 'Sample load failed. Is the backend running?');
