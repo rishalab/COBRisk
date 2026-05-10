@@ -227,7 +227,7 @@ export default function AISuggestions({ module, aiConfigured }) {
     setState('loading');
     setData(null);
     try {
-      const res = await axios.post('/api/ai-suggest', { module });
+      const res = await axios.post('https://cobrisk.onrender.com/api/ai-suggest', { module });
       setData(res.data);
       setState('done');
     } catch (e) {
