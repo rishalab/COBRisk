@@ -29,7 +29,7 @@ export default function LandingPage({ onAnalysis }) {
   const handleAnalyze = async () => {
     if (files.length === 0) { setError('Please upload at least one COBOL file.'); return; }
     setLoading(true); setError(''); setProgress('Parsing modules…');
-    nst fd = new FormData();
+    const fd = new FormData();
     files.forEach(f => fd.append('files', f));
     try {
       setProgress('mputing risk metrics…');
