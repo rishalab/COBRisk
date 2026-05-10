@@ -38,7 +38,7 @@ export default function DashboardPage({ data, onReset }) {
         <div className={styles.headerLeft}>
           <div className={styles.logo}>
             <span className={styles.logoIcon}>⬡</span>
-            <span className={styles.logoText}>CO<span>Risk</span></span>
+            <span className={styles.logoText}>COB<span>Risk</span></span>
           </div>
           <span className={styles.headerSub}>Analysis Complete</span>
         </div>
