@@ -33,7 +33,7 @@ export default function LandingPage({ onAnalysis }) {
     files.forEach(f => fd.append('files', f));
     try {
       setProgress('mputing risk metrics…');
-      const res = await axios.post('/api/analyze', fd, {
+      const res = await axios.post('https://cobrisk.onrender.com/api/analyze', fd, {
         headers: { 'ntent-Type': 'multipart/form-data' },
       });
       setProgress('Building dependency graph…');
@@ -48,7 +48,7 @@ export default function LandingPage({ onAnalysis }) {
     setLoading(true); setError(''); setProgress('Loading sample BOL files…');
     try {
       setProgress('Analyzing sample debase…');
-      const res = await axios.get('/api/analyze-sample');
+      const res = await axios.get('https://cobrisk.onrender.com/api/analyze-sample');
       onAnalysis(res.data);
     } catch (e) {
       setError(e.response?.data?.error || 'Sample load failed. Is the backend running?');
