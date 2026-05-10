@@ -1,0 +1,67 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. CUSTPROC.
+      * Customer Processing Main Module
+      * Handles all customer transaction processing
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CUSTOMER-FILE ASSIGN TO "CUSTMAST.DAT".
+           SELECT TRANS-FILE ASSIGN TO "TRANS.DAT".
+           SELECT REPORT-FILE ASSIGN TO "REPORT.OUT".
+       DATA DIVISION.
+       FILE SECTION.
+       FD CUSTOMER-FILE.
+       01 CUSTOMER-RECORD.
+          05 CUST-ID        PIC 9(8).
+          05 CUST-NAME      PIC X(30).
+          05 CUST-BALANCE   PIC S9(9)V99 COMP-3.
+          05 CUST-STATUS    PIC X(2).
+       FD TRANS-FILE.
+       01 TRANS-RECORD.
+          05 TRANS-ID       PIC 9(10).
+          05 TRANS-AMOUNT   PIC S9(7)V99 COMP-3.
+          05 TRANS-TYPE     PIC X(1).
+       WORKING-STORAGE SECTION.
+       01 WS-FLAGS.
+          05 WS-EOF         PIC X VALUE 'N'.
+          05 WS-ERROR       PIC X VALUE 'N'.
+       01 WS-COUNTERS.
+          05 WS-TOTAL-RECS  PIC 9(6) COMP-3.
+          05 WS-PROC-RECS   PIC 9(6) COMP-3.
+       01 WS-WORK-AREA.
+          05 WS-CALC-AMT    PIC S9(9)V99 COMP-3.
+          05 WS-TEMP        PIC X(100).
+          05 WS-TEMP-2 REDEFINES WS-TEMP PIC 9(100).
+       PROCEDURE DIVISION.
+       MAIN-PARA.
+           OPEN INPUT CUSTOMER-FILE.
+           OPEN INPUT TRANS-FILE.
+           OPEN OUTPUT REPORT-FILE.
+           PERFORM READ-CUSTOMERS.
+           PERFORM PROCESS-TRANSACTIONS.
+           PERFORM WRITE-REPORT.
+           CLOSE CUSTOMER-FILE.
+           CLOSE TRANS-FILE.
+           CLOSE REPORT-FILE.
+           STOP RUN.
+       READ-CUSTOMERS.
+           READ CUSTOMER-FILE AT END MOVE 'Y' TO WS-EOF.
+           IF WS-EOF = 'N'
+               ADD 1 TO WS-TOTAL-RECS
+               CALL 'VALCUST' USING CUSTOMER-RECORD
+               PERFORM READ-CUSTOMERS.
+       PROCESS-TRANSACTIONS.
+           READ TRANS-FILE AT END MOVE 'Y' TO WS-EOF.
+           IF TRANS-TYPE = 'D'
+               GO TO DEBIT-PROC.
+           IF TRANS-TYPE = 'C'
+               PERFORM CREDIT-PROC.
+       DEBIT-PROC.
+           SUBTRACT TRANS-AMOUNT FROM CUST-BALANCE.
+           ADD 1 TO WS-PROC-RECS.
+           GO TO PROCESS-TRANSACTIONS.
+       CREDIT-PROC.
+           ADD TRANS-AMOUNT TO CUST-BALANCE.
+           ADD 1 TO WS-PROC-RECS.
+       WRITE-REPORT.
+           CALL 'RPTGEN' USING WS-COUNTERS.
