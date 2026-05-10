@@ -80,8 +80,8 @@ export default function LandingPage({ onAnalysis }) {
           <span className={styles.accent}>Before You Migrate</span>
         </h1>
         <p className={styles.heroSub}>
-          COBRIS analyzes your COBOL codebase and scores each module<br />
-          across 5 dimensions — so your team migrates smart, not blind.
+          COBRisk analyzes your COBOL codebase and scores each module<br />
+          across 5 dimensions — so you can migrate smart, not blind.
         </p>
         <div className={styles.heroStats}>
           {[['5', 'Risk Metrics'], ['MRI', 'Composite Score'], ['3', 'Risk Tiers'], ['0', 'Setup Required']].map(([v, l]) => (
@@ -153,11 +153,11 @@ export default function LandingPage({ onAnalysis }) {
       </section>
 
       <section id="how" className={styles.howSection}>
-        <h2 className={styles.sectionTitle}>How COBRIS Works</h2>
+        <h2 className={styles.sectionTitle}>How COBRisk Works</h2>
         <div className={styles.steps}>
           {[
             { icon: '📤', step: '01', title: 'Upload', desc: 'Drop your .cob / .cbl / .cpy files. No installation, no mainframe needed.' },
-            { icon: '🔬', step: '02', title: 'Parse', desc: 'COBRIS parses divisions, paragraphs, CALL chains, PIC clauses, and file operations.' },
+            { icon: '🔬', step: '02', title: 'Parse', desc: 'COBRisk parses divisions, paragraphs, CALL chains, PIC clauses, and file operations.' },
             { icon: '📊', step: '03', title: 'Score', desc: 'Five weighted metrics produce a Migration Risk Index (MRI) per module.' },
             { icon: '🗺️', step: '04', title: 'Decide', desc: 'Visual dependency graph and tier classification tell you exactly what to migrate first.' },
           ].map(s => (
@@ -192,7 +192,7 @@ export default function LandingPage({ onAnalysis }) {
       </section>
 
       <footer className={styles.footer}>
-        <p>COBRIS · Built for COBOL modernization research · RISHA Lab, IIT Tirupati</p>
+        <p>COBRisk · Built for COBOL modernization research · RISHA Lab, IIT Tirupati</p>
       </footer>
     </div>
   );
