@@ -1,0 +1,95 @@
+.wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; border-bottom: 1px solid var(--border);
+  flex-wrap: wrap; gap: 12px;
+}
+.title {
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+}
+.count {
+  font-size: 13px; background: var(--bg-soft); color: var(--text-muted);
+  padding: 2px 10px; border-radius: 100px; font-weight: 500;
+}
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.filterBtn {
+  padding: 6px 14px; border-radius: 100px;
+  border: 1.5px solid var(--border); background: var(--bg-soft);
+  font-size: 13px; font-weight: 500; color: var(--text-secondary);
+  cursor: pointer; transition: all .2s;
+}
+.filterBtn:hover { border-color: var(--teal); color: var(--teal); }
+.filterActive {
+  border-color: var(--teal); background: var(--teal-pale); color: var(--teal);
+}
+
+.tableWrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; }
+.table thead tr {
+  background: var(--bg-soft);
+}
+.table th {
+  padding: 12px 16px; text-align: left;
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--text-muted);
+  white-space: nowrap;
+}
+.sortTh { cursor: pointer; user-select: none; }
+.sortTh:hover { color: var(--teal); }
+.sortActive { color: var(--teal); font-weight: 700; }
+.sortInactive { opacity: .4; }
+
+.row {
+  border-bottom: 1px solid var(--bg-soft);
+  cursor: pointer; transition: background .15s;
+}
+.row:hover { background: var(--bg-soft); }
+.row:last-child { border-bottom: none; }
+.table td { padding: 14px 16px; vertical-align: middle; }
+
+.modName {
+  display: block; font-family: var(--font-mono); font-size: 14px;
+  font-weight: 500; color: var(--teal);
+}
+.modLines { display: block; font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+.mriBarWrap { display: flex; align-items: center; gap: 10px; min-width: 130px; }
+.mriBarTrack {
+  flex: 1; height: 8px; background: var(--bg-soft);
+  border-radius: 100px; overflow: hidden;
+}
+.mriBarFill {
+  height: 100%; border-radius: 100px;
+  transition: width .6s ease;
+}
+.mriBarVal {
+  font-family: var(--font-display); font-size: 15px; font-weight: 700;
+  min-width: 32px; text-align: right;
+}
+
+.tierBadge {
+  display: inline-block; padding: 4px 10px;
+  border-radius: 100px; font-size: 12px; font-weight: 600;
+  white-space: nowrap;
+}
+.metricVal {
+  font-family: var(--font-mono); font-size: 14px;
+  color: var(--text-secondary);
+}
+.lineCount {
+  font-family: var(--font-mono); font-size: 13px; color: var(--text-muted);
+}
+.detailBtn {
+  background: none; border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); padding: 5px 12px;
+  font-size: 13px; font-weight: 500; color: var(--text-secondary);
+  cursor: pointer; white-space: nowrap; transition: all .2s;
+}
+.detailBtn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-pale); }

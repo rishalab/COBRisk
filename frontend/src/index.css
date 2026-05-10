@@ -1,0 +1,69 @@
+:root {
+  /* ── Palette: Warm Cream × Deep Teal × Coral Accent ── */
+  --bg-base:       #f7f3ee;
+  --bg-card:       #ffffff;
+  --bg-soft:       #eee9e1;
+  --bg-muted:      #e6dfd5;
+
+  --text-primary:  #1a1612;
+  --text-secondary:#5a5248;
+  --text-muted:    #9a9088;
+
+  --teal:          #1a5f6a;
+  --teal-light:    #2a8a99;
+  --teal-pale:     #d0ecf0;
+
+  --coral:         #e8622a;
+  --coral-light:   #f28a60;
+  --coral-pale:    #fde8de;
+
+  --amber:         #d4860a;
+  --amber-pale:    #fdf1d6;
+
+  --green:         #2d7a4f;
+  --green-pale:    #d6f0e2;
+
+  --risk-high:     #e8622a;
+  --risk-high-bg:  #fde8de;
+  --risk-med:      #d4860a;
+  --risk-med-bg:   #fdf1d6;
+  --risk-low:      #2d7a4f;
+  --risk-low-bg:   #d6f0e2;
+
+  --border:        #ddd6cc;
+  --shadow-sm:     0 2px 8px rgba(26,22,18,0.08);
+  --shadow-md:     0 8px 32px rgba(26,22,18,0.12);
+  --shadow-lg:     0 20px 60px rgba(26,22,18,0.16);
+
+  --radius-sm:     8px;
+  --radius-md:     14px;
+  --radius-lg:     20px;
+  --radius-xl:     28px;
+
+  --font-display:  'Syne', sans-serif;
+  --font-body:     'DM Sans', sans-serif;
+  --font-mono:     'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-soft); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* utility */
+.font-display { font-family: var(--font-display); }
+.font-mono    { font-family: var(--font-mono); }
