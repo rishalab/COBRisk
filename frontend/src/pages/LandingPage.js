@@ -33,7 +33,7 @@ export default function LandingPage({ onAnalysis }) {
     files.forEach(f => fd.append('files', f));
     try {
       setProgress('mputing risk metrics…');
-      nst res = await axios.post('/api/analyze', fd, {
+      const res = await axios.post('/api/analyze', fd, {
         headers: { 'ntent-Type': 'multipart/form-data' },
       });
       setProgress('Building dependency graph…');
@@ -44,7 +44,7 @@ export default function LandingPage({ onAnalysis }) {
     } finally { setLoading(false); setProgress(''); }
   };
 
-  nst handleSample = async () => {
+  const handleSample = async () => {
     setLoading(true); setError(''); setProgress('Loading sample BOL files…');
     try {
       setProgress('Analyzing sample debase…');
