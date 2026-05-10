@@ -153,7 +153,7 @@ export default function AIBatchPanel({ modules, aiConfigured }) {
       `Analyzing ${riskyModules.length} module${riskyModules.length !== 1 ? 's' : ''} with Groq LLM…`
     );
     try {
-      const res = await axios.post('/api/ai-suggest-all', { modules });
+      const res = await axios.post('https://cobrisk.onrender.com/api/ai-suggest-all', { modules });
       setResults(res.data.results);
       setState('done');
     } catch (e) {
